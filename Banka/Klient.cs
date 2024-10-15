@@ -36,21 +36,24 @@ namespace Banka
             Prijmeni = data[1];
             PrihlasovaciJmeno = data[2];
             Heslo = data[3];
-            for (int i = 5; i < data.Length; i += 4)
+            for (int i = 6; i < data.Length; i += 5)
             {
                 if (data[i] == "Běžný účet")
                 {
-                    BezneUcty.Add(new BeznyUcet(data[i - 1], data[i], data[i + 1], data[i + 2]));
+                    BezneUcty.Add(new BeznyUcet(data[i - 2],data[i - 1], data[i], data[i + 1], data[i + 2]));
                 }else if (data[i] == "Spořící účet")
                 {
-                    SporiciUcty.Add(new SporiciUcet(data[i - 1], data[i], data[i + 1], data[i + 2]));
+                    SporiciUcty.Add(new SporiciUcet(data[i - 2], data[i - 1], data[i], data[i + 1], data[i + 2]));
                 }
             }
         }
 
         public string ToCSV()
         {
-            return Jmeno + ";" + Prijmeni + ";" + PrihlasovaciJmeno + ";" + Heslo + ";" + BezneUctyToCSV() + ";" + SporiciUctyToCSV();
+            if (SporiciUctyToCSV() == string.Empty)
+                return Jmeno + ";" + Prijmeni + ";" + PrihlasovaciJmeno + ";" + Heslo + ";" + BezneUctyToCSV();
+            else if (BezneUctyToCSV() == string.Empty) return Jmeno + ";" + Prijmeni + ";" + PrihlasovaciJmeno + ";" + Heslo;
+            else return Jmeno + ";" + Prijmeni + ";" + PrihlasovaciJmeno + ";" + Heslo + ";" + BezneUctyToCSV() + ";" + SporiciUctyToCSV();
         }
 
         public override string ToString()
@@ -60,18 +63,29 @@ namespace Banka
 
         public string BezneUctyToCSV()
         {
-            foreach (BeznyUcet beznyUcet in BezneUcty)
+            if (BezneUcty.Count > 0)
             {
-                return beznyUcet.ToCSV() ;
+            string bezneUctyCSV = string.Empty;
+                foreach (BeznyUcet beznyUcet in BezneUcty)
+                {
+                    bezneUctyCSV += beznyUcet.ToCSV() + ";";
+                }
+            bezneUctyCSV = bezneUctyCSV.Remove(bezneUctyCSV.Length-1);
+            return bezneUctyCSV;
             }
             return string.Empty;
         }
 
         public string SporiciUctyToCSV()
         {
-            foreach (SporiciUcet sporiciUcet in SporiciUcty)
-            {
-                return sporiciUcet.ToCSV();
+            if(SporiciUcty.Count > 0){
+            string sporiciUctyCSV = string.Empty;
+                foreach (SporiciUcet sporiciUcet in SporiciUcty)
+                {
+                    sporiciUctyCSV += sporiciUcet.ToCSV() + ";";
+                }
+            sporiciUctyCSV = sporiciUctyCSV.Remove(sporiciUctyCSV.Length-1);
+            return sporiciUctyCSV;
             }
             return string.Empty;
         }

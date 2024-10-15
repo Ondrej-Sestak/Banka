@@ -9,16 +9,17 @@ namespace Banka
     public class SporiciUcet : BeznyUcet
     {
 
-        public SporiciUcet(string text) :base(text)
+        public SporiciUcet(string radekCSV) :base(radekCSV)
         {
-            if (!text.Contains(";"))
-            {
-                Klient = text;
-                TypUctu = "Spořící účet";
-            }
+
         }
 
-        public SporiciUcet(string klient, string typUctu, string cisloUctu, string castka) : base(klient, typUctu, cisloUctu, castka)
+        public SporiciUcet(string nazevUctu, string klient) :base (nazevUctu, klient)
+        {
+            TypUctu = "Spořící účet";
+        }
+
+        public SporiciUcet(string nazevUctu, string klient, string typUctu, string cisloUctu, string castka) : base(nazevUctu,klient, typUctu, cisloUctu, castka)
         {
 
         }

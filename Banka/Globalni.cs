@@ -44,7 +44,7 @@ namespace Banka
             if (!souborBeznyUcetExistuje)
             {
                 StreamWriter streamWriter = new StreamWriter("BezneUcty.csv", false, Encoding.UTF8);
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
+                streamWriter.WriteLine("Název účtu;Klient;Typ účtu; Číslo účtu; Částka");
                 streamWriter.Close();
             }
 
@@ -66,7 +66,7 @@ namespace Banka
             if (!souborSporiciUcetExistuje)
             {
                 StreamWriter streamWriter = new StreamWriter("SporiciUcty.csv", false, Encoding.UTF8);
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
+                streamWriter.WriteLine("Název účtu;Klient;Typ účtu; Číslo účtu; Částka");
                 streamWriter.Close();
             }
 
@@ -98,7 +98,7 @@ namespace Banka
         {
             using (StreamWriter streamWriter = new StreamWriter("BezneUcty.csv", false, Encoding.UTF8))
             {
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
+                streamWriter.WriteLine("Název účtu;Klient;Typ účtu; Číslo účtu; Částka");
                 foreach (BeznyUcet beznyUcet in seznamBeznychUctu)
                 {
                     streamWriter.WriteLine(beznyUcet.ToCSV());
@@ -110,7 +110,7 @@ namespace Banka
         {
             using (StreamWriter streamWriter = new StreamWriter("SporiciUcty.csv", false, Encoding.UTF8))
             {
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
+                streamWriter.WriteLine("Název účtu;Klient;Typ účtu; Číslo účtu; Částka");
                 foreach (SporiciUcet sporiciUcet in seznamSporicichUctu)
                 {
                     streamWriter.WriteLine(sporiciUcet.ToCSV());

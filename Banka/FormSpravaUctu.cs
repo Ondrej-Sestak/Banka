@@ -18,21 +18,27 @@ namespace Banka
 
             lbJmeno.Text = klient.Jmeno + " " + klient.Prijmeni;
             aktualniKlient = klient;
+            if (aktualniKlient.BezneUcty.Count == 0)
+            {
+                btSporiciUcetVytvorit.Visible = false;
+            }
         }
 
         Klient aktualniKlient;
 
         private void btBeznyUcet_Click(object sender, EventArgs e)
         {
-            BeznyUcet beznyUcet = new BeznyUcet(aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
+            Microsoft.VisualBasic.Interaction.InputBox("Question?", "Title", "Default Text");
+            BeznyUcet beznyUcet = new BeznyUcet("Běžný účet",aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
             aktualniKlient.BezneUcty.Add(beznyUcet);
             Globalni.seznamBeznychUctu.Add(beznyUcet);
             lboxBezneUcty.Items.Add(beznyUcet);
+            btSporiciUcetVytvorit.Visible = true;
         }
 
-        private void btSporiciUcet_Click(object sender, EventArgs e)
+        private void btSporiciUcetVytvorit_Click(object sender, EventArgs e)
         {
-            SporiciUcet sporiciUcet = new SporiciUcet(aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
+            SporiciUcet sporiciUcet = new SporiciUcet("Spořící účet",aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
             aktualniKlient.SporiciUcty.Add(sporiciUcet);
             Globalni.seznamSporicichUctu.Add(sporiciUcet);
             lboxSporiciUcty.Items.Add(sporiciUcet);

@@ -30,7 +30,7 @@
         {
             this.btBeznyPoslat = new System.Windows.Forms.Button();
             this.lbCastka = new System.Windows.Forms.Label();
-            this.btSporiciUcet = new System.Windows.Forms.Button();
+            this.btSporiciUcetVytvorit = new System.Windows.Forms.Button();
             this.btBeznyUcet = new System.Windows.Forms.Button();
             this.lbSporiciUcet = new System.Windows.Forms.Label();
             this.lbBeznyUcet = new System.Windows.Forms.Label();
@@ -58,15 +58,15 @@
             this.lbCastka.Size = new System.Drawing.Size(0, 13);
             this.lbCastka.TabIndex = 13;
             // 
-            // btSporiciUcet
+            // btSporiciUcetVytvorit
             // 
-            this.btSporiciUcet.Location = new System.Drawing.Point(158, 231);
-            this.btSporiciUcet.Name = "btSporiciUcet";
-            this.btSporiciUcet.Size = new System.Drawing.Size(75, 23);
-            this.btSporiciUcet.TabIndex = 12;
-            this.btSporiciUcet.Text = "Vytvořit ";
-            this.btSporiciUcet.UseVisualStyleBackColor = true;
-            this.btSporiciUcet.Click += new System.EventHandler(this.btSporiciUcet_Click);
+            this.btSporiciUcetVytvorit.Location = new System.Drawing.Point(158, 231);
+            this.btSporiciUcetVytvorit.Name = "btSporiciUcetVytvorit";
+            this.btSporiciUcetVytvorit.Size = new System.Drawing.Size(75, 23);
+            this.btSporiciUcetVytvorit.TabIndex = 12;
+            this.btSporiciUcetVytvorit.Text = "Vytvořit ";
+            this.btSporiciUcetVytvorit.UseVisualStyleBackColor = true;
+            this.btSporiciUcetVytvorit.Click += new System.EventHandler(this.btSporiciUcetVytvorit_Click);
             // 
             // btBeznyUcet
             // 
@@ -142,12 +142,12 @@
             this.Controls.Add(this.lboxBezneUcty);
             this.Controls.Add(this.btBeznyPoslat);
             this.Controls.Add(this.lbCastka);
-            this.Controls.Add(this.btSporiciUcet);
+            this.Controls.Add(this.btSporiciUcetVytvorit);
             this.Controls.Add(this.btBeznyUcet);
             this.Controls.Add(this.lbSporiciUcet);
             this.Controls.Add(this.lbBeznyUcet);
             this.Controls.Add(this.lbJmeno);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSpravaUctu";
             this.Text = "FormSpravaUctu";
             this.Load += new System.EventHandler(this.FormSpravaUctu_Load);
@@ -160,7 +160,7 @@
 
         private System.Windows.Forms.Button btBeznyPoslat;
         private System.Windows.Forms.Label lbCastka;
-        private System.Windows.Forms.Button btSporiciUcet;
+        private System.Windows.Forms.Button btSporiciUcetVytvorit;
         private System.Windows.Forms.Button btBeznyUcet;
         private System.Windows.Forms.Label lbSporiciUcet;
         private System.Windows.Forms.Label lbBeznyUcet;

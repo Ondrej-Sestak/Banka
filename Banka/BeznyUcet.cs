@@ -10,34 +10,34 @@ namespace Banka
 {
     public class BeznyUcet
     {
+        public string NazevUctu { get; set; } = "Běžný účet";
         public int CisloUctu { get; set; }
         public int Castka { get; set; } = 0;
         public string Klient { get; set; }
         public string TypUctu { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text">Zadávajte buďto jméno klienta nebo řádek CSV</param>
-        public BeznyUcet(string text) {
-            if (text.Contains(";"))
+
+        public BeznyUcet(string nazevUctu, string klient) {
+            TypUctu = "Běžný účet";
+            NazevUctu = nazevUctu;
+            Klient = klient;
+            CisloUctu = VytvoreniCislaUctu();
+            if (CisloUctu == -1)
             {
-                Klient = text.Split(';')[0];
-                TypUctu = text.Split(';')[1];
-                CisloUctu = Convert.ToInt32(text.Split(';')[2]);
-                Castka = Convert.ToInt32(text.Split(';')[3]);
-            }
-            else{ 
-                TypUctu = "Běžný účet";
-                Klient = text;
-                CisloUctu = VytvoreniCislaUctu();
-                if (CisloUctu == -1)
-                {
-                    throw new ArgumentException("Došli nám čísla účtů, kontaktujte prosím naší banku.");
-                }
+                throw new ArgumentException("Došli nám čísla účtů, kontaktujte prosím naší banku.");
             }
         }
 
-        public BeznyUcet(string klient, string typUctu, string cisloUctu, string castka) {
+        public BeznyUcet(string radekCSV)
+        {
+                NazevUctu = radekCSV.Split(';')[0];
+                Klient = radekCSV.Split(';')[1];
+                TypUctu = radekCSV.Split(';')[2];
+                CisloUctu = Convert.ToInt32(radekCSV.Split(';')[3]);
+                Castka = Convert.ToInt32(radekCSV.Split(';')[4]);
+        }
+
+        public BeznyUcet(string nazevUctu, string klient, string typUctu, string cisloUctu, string castka){
+            NazevUctu = nazevUctu;
             Klient = klient;
             TypUctu= typUctu;
             CisloUctu= Convert.ToInt32(cisloUctu);
@@ -46,12 +46,12 @@ namespace Banka
 
         public string ToCSV()
         {
-            return Klient + ";" + TypUctu + ";" + CisloUctu + ";" + Castka;
+            return NazevUctu + ";" + Klient + ";" + TypUctu + ";" + CisloUctu + ";" + Castka;
         }
 
         public override string ToString()
         {
-            return Klient + " " + Castka + " Kč";
+            return NazevUctu + " " + Castka + " Kč";
         }
 
         public int VytvoreniCislaUctu()
