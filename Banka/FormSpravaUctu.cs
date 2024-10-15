@@ -16,7 +16,7 @@ namespace Banka
         {
             InitializeComponent();
 
-            lbJmeno.Text = klient.Jmeno +
+            lbJmeno.Text = klient.Jmeno + " " + klient.Prijmeni;
         }
 
         private void btBeznyUcet_Click(object sender, EventArgs e)
