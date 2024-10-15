@@ -16,11 +16,14 @@ namespace Banka
         public FormPrihlaseni()
         {
             InitializeComponent();
+
+            FormClosing += new FormClosingEventHandler(FormPrihlaseni_FormClosing);
         }
 
         private void btVytvoritUcet_Click(object sender, EventArgs e)
         {
-            
+            FormNovyUcet formNovyUcet = new FormNovyUcet();
+            formNovyUcet.ShowDialog();
         }
 
         private void btPrihlasit_Click(object sender, EventArgs e)
@@ -30,78 +33,32 @@ namespace Banka
                 bool UcetBylNajit = false;
                 foreach (Klient klient in Globalni.seznamKlientu)
                 {
-                    if (klient.Jmeno == tbPrihlasovaciJmeno.Text)
+                    if (klient.PrihlasovaciJmeno == tbPrihlasovaciJmeno.Text && klient.Heslo == tbHeslo.Text)
                     {
                         FormSpravaUctu formSpravaUctu = new FormSpravaUctu(klient);
+                        formSpravaUctu.ShowDialog();
                         UcetBylNajit = true;
                         break;
                     }
                 }
                 if (!UcetBylNajit)
-                    MessageBox.Show("Zadané údaje nejsou zprávné, zkuste to znovu.");
+                    MessageBox.Show("Zadané údaje nejsou správné, zkuste to znovu.");
             }else
                 MessageBox.Show("Prosím vyplňte všechny kolonky.");
         }
 
         private void FormPrihlaseni_Load(object sender, EventArgs e)
         {
-            bool souborBankovniUcetExistuje = File.Exists("Klienti.csv");
+            Globalni.NactiSeznamKlientu();
+            Globalni.NactiSeznamBeznychUctu();
+            Globalni.NactiSeznamSporicichUctu();
+        }
 
-            if (!souborBankovniUcetExistuje)
-            {
-                StreamWriter streamWriter = new StreamWriter("Klienti.csv", false, Encoding.UTF8);
-                streamWriter.WriteLine("Jméno;Příjmení;Příhlašovací jméno;Heslo");
-                streamWriter.Close();
-            }
-
-            bool souborBeznyUcetExistuje = File.Exists("BezneUcty.csv");
-
-            if (!souborBeznyUcetExistuje)
-            {
-                StreamWriter streamWriter = new StreamWriter("BezneUcty.csv", false, Encoding.UTF8);
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
-                streamWriter.Close();
-            }
-
-            bool souborSporiciUcetExistuje = File.Exists("SporiciUcty.csv");
-
-            if (!souborBankovniUcetExistuje)
-            {
-                StreamWriter streamWriter = new StreamWriter("SporiciUcty.csv", false, Encoding.UTF8);
-                streamWriter.WriteLine("Klient;Typ účtu; Číslo účtu; Částka");
-                streamWriter.Close();
-            }
-
-            using (StreamReader streamReader = new StreamReader("Klienti.csv", Encoding.UTF8))
-            {
-                streamReader.ReadLine();
-                string radekCSV;
-                while (!streamReader.EndOfStream)
-                {
-                    radekCSV = streamReader.ReadLine();
-                    Globalni.seznamKlientu.Add(new Klient(radekCSV));
-                }
-            }
-            using (StreamReader streamReader = new StreamReader("BezneUcty.csv", Encoding.UTF8))
-            {
-                streamReader.ReadLine();
-                string radekCSV;
-                while (!streamReader.EndOfStream)
-                {
-                    radekCSV = streamReader.ReadLine();
-                    Globalni.seznamBeznychUctu.Add(new BeznyUcet(radekCSV));
-                }
-            }
-            using (StreamReader streamReader = new StreamReader("SporiciUcty.csv", Encoding.UTF8))
-            {
-                streamReader.ReadLine();
-                string radekCSV;
-                while (!streamReader.EndOfStream)
-                {
-                    radekCSV = streamReader.ReadLine();
-                    Globalni.seznamSporicichUctu.Add(new SporiciUcet(radekCSV));
-                }
-            }
+        private void FormPrihlaseni_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Globalni.UlozSeznamKlientu();
+            Globalni.UlozSeznamBeznychUctu();
+            Globalni.UlozSeznamSporicichUctu();
         }
     }
 }

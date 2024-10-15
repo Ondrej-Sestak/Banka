@@ -36,6 +36,44 @@ namespace Banka
             Prijmeni = data[1];
             PrihlasovaciJmeno = data[2];
             Heslo = data[3];
+            for (int i = 5; i < data.Length; i += 4)
+            {
+                if (data[i] == "Běžný účet")
+                {
+                    BezneUcty.Add(new BeznyUcet(data[i - 1], data[i], data[i + 1], data[i + 2]));
+                }else if (data[i] == "Spořící účet")
+                {
+                    SporiciUcty.Add(new SporiciUcet(data[i - 1], data[i], data[i + 1], data[i + 2]));
+                }
+            }
+        }
+
+        public string ToCSV()
+        {
+            return Jmeno + ";" + Prijmeni + ";" + PrihlasovaciJmeno + ";" + Heslo + ";" + BezneUctyToCSV() + ";" + SporiciUctyToCSV();
+        }
+
+        public override string ToString()
+        {
+            return Jmeno + Prijmeni + PrihlasovaciJmeno + Heslo;
+        }
+
+        public string BezneUctyToCSV()
+        {
+            foreach (BeznyUcet beznyUcet in BezneUcty)
+            {
+                return beznyUcet.ToCSV() ;
+            }
+            return string.Empty;
+        }
+
+        public string SporiciUctyToCSV()
+        {
+            foreach (SporiciUcet sporiciUcet in SporiciUcty)
+            {
+                return sporiciUcet.ToCSV();
+            }
+            return string.Empty;
         }
     }
 }

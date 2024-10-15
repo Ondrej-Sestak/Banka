@@ -14,8 +14,13 @@ namespace Banka
             if (!text.Contains(";"))
             {
                 Klient = text;
-                TypUctu = "Sporici ucet";
+                TypUctu = "Spořící účet";
             }
+        }
+
+        public SporiciUcet(string klient, string typUctu, string cisloUctu, string castka) : base(klient, typUctu, cisloUctu, castka)
+        {
+
         }
     }
 }

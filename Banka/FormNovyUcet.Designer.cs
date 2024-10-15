@@ -44,99 +44,88 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(403, 142);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(183, 55);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 25);
+            this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 29;
             this.label7.Text = "Heslo znovu";
             // 
             // tbHesloZnovu
             // 
-            this.tbHesloZnovu.Location = new System.Drawing.Point(409, 173);
-            this.tbHesloZnovu.Margin = new System.Windows.Forms.Padding(6);
+            this.tbHesloZnovu.Location = new System.Drawing.Point(185, 71);
             this.tbHesloZnovu.Name = "tbHesloZnovu";
-            this.tbHesloZnovu.Size = new System.Drawing.Size(282, 31);
+            this.tbHesloZnovu.Size = new System.Drawing.Size(143, 20);
             this.tbHesloZnovu.TabIndex = 22;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(403, 57);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(183, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 25);
+            this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "Heslo";
             // 
             // tbHeslo
             // 
-            this.tbHeslo.Location = new System.Drawing.Point(409, 88);
-            this.tbHeslo.Margin = new System.Windows.Forms.Padding(6);
+            this.tbHeslo.Location = new System.Drawing.Point(185, 27);
             this.tbHeslo.Name = "tbHeslo";
-            this.tbHeslo.Size = new System.Drawing.Size(282, 31);
+            this.tbHeslo.Size = new System.Drawing.Size(143, 20);
             this.tbHeslo.TabIndex = 20;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 229);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(13, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(193, 25);
+            this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 24;
             this.label3.Text = "Přihlašovací jméno";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 144);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(13, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 25);
+            this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "Příjmení";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 67);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(13, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 25);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Jméno";
             // 
             // tbPrihlasovaciJmeno
             // 
-            this.tbPrihlasovaciJmeno.Location = new System.Drawing.Point(69, 260);
-            this.tbPrihlasovaciJmeno.Margin = new System.Windows.Forms.Padding(6);
+            this.tbPrihlasovaciJmeno.Location = new System.Drawing.Point(15, 116);
             this.tbPrihlasovaciJmeno.Name = "tbPrihlasovaciJmeno";
-            this.tbPrihlasovaciJmeno.Size = new System.Drawing.Size(282, 31);
+            this.tbPrihlasovaciJmeno.Size = new System.Drawing.Size(143, 20);
             this.tbPrihlasovaciJmeno.TabIndex = 19;
             // 
             // tbPrijmeni
             // 
-            this.tbPrijmeni.Location = new System.Drawing.Point(69, 175);
-            this.tbPrijmeni.Margin = new System.Windows.Forms.Padding(6);
+            this.tbPrijmeni.Location = new System.Drawing.Point(15, 72);
             this.tbPrijmeni.Name = "tbPrijmeni";
-            this.tbPrijmeni.Size = new System.Drawing.Size(282, 31);
+            this.tbPrijmeni.Size = new System.Drawing.Size(143, 20);
             this.tbPrijmeni.TabIndex = 16;
             // 
             // tbJmeno
             // 
-            this.tbJmeno.Location = new System.Drawing.Point(69, 98);
-            this.tbJmeno.Margin = new System.Windows.Forms.Padding(6);
+            this.tbJmeno.Location = new System.Drawing.Point(15, 32);
             this.tbJmeno.Name = "tbJmeno";
-            this.tbJmeno.Size = new System.Drawing.Size(282, 31);
+            this.tbJmeno.Size = new System.Drawing.Size(143, 20);
             this.tbJmeno.TabIndex = 15;
             // 
             // btVytvorit
             // 
-            this.btVytvorit.Location = new System.Drawing.Point(527, 229);
-            this.btVytvorit.Margin = new System.Windows.Forms.Padding(6);
+            this.btVytvorit.Location = new System.Drawing.Point(245, 100);
             this.btVytvorit.Name = "btVytvorit";
-            this.btVytvorit.Size = new System.Drawing.Size(168, 67);
+            this.btVytvorit.Size = new System.Drawing.Size(84, 35);
             this.btVytvorit.TabIndex = 25;
             this.btVytvorit.Text = "Vytvořit";
             this.btVytvorit.UseVisualStyleBackColor = true;
@@ -144,9 +133,9 @@
             // 
             // FormNovyUcet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 373);
+            this.ClientSize = new System.Drawing.Size(343, 163);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbHesloZnovu);
             this.Controls.Add(this.label6);
@@ -158,8 +147,9 @@
             this.Controls.Add(this.tbPrijmeni);
             this.Controls.Add(this.tbJmeno);
             this.Controls.Add(this.btVytvorit);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormNovyUcet";
-            this.Text = "FormVytvoritUcet";
+            this.Text = "Vytvoření nového účtu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

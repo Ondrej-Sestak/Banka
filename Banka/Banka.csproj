@@ -65,7 +65,7 @@
     <Compile Include="FormNovyUcet.Designer.cs">
       <DependentUpon>FormNovyUcet.cs</DependentUpon>
     </Compile>
-    <Compile Include="GlobalVar.cs" />
+    <Compile Include="Globalni.cs" />
     <Compile Include="Klient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
