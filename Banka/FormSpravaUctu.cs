@@ -28,7 +28,6 @@ namespace Banka
 
         private void btBeznyUcet_Click(object sender, EventArgs e)
         {
-            Microsoft.VisualBasic.Interaction.InputBox("Question?", "Title", "Default Text");
             BeznyUcet beznyUcet = new BeznyUcet("Běžný účet",aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
             aktualniKlient.BezneUcty.Add(beznyUcet);
             Globalni.seznamBeznychUctu.Add(beznyUcet);
