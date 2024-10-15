@@ -26,7 +26,7 @@ namespace Banka
             Jmeno = jmeno;
             Prijmeni = prijmeni;
             PrihlasovaciJmeno = prihlasovaciJmeno;
-            Heslo = heslo; ; 
+            Heslo = heslo;
         }
 
         public Klient(string radekCSV)

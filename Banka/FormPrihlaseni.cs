@@ -27,7 +27,10 @@ namespace Banka
             foreach (Klient klient in Globalni.seznamKlientu)
             {
                 if (klient.Jmeno == tbPrihlasovaciJmeno.Text)
-                    klient.BezneUcty.Add(new BeznyUcet());
+                {
+                    FormSpravaUctu formSpravaUctu = new FormSpravaUctu(klient);
+                }
+                    
             }
         }
     }

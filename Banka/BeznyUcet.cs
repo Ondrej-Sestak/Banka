@@ -13,13 +13,23 @@ namespace Banka
 
         public string Klient { get; set; }
         public string TypUctu { get; set; }
-
-        public BeznyUcet(string radekCSV)
-        {
-            Klient = radekCSV.Split(';')[0];
-            TypUctu = radekCSV.Split(';')[1];
-            CisloUctu = Convert.ToInt32(radekCSV.Split(';')[2]);
-            Castka = Convert.ToInt32(radekCSV.Split(';')[3]);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text">Zadávajte buďto jméno klienta nebo radekCSV</param>
+        public BeznyUcet(string text) {
+            if (text.Contains(";"))
+            {
+                Klient = text.Split(';')[0];
+                TypUctu = text.Split(';')[1];
+                CisloUctu = Convert.ToInt32(text.Split(';')[2]);
+                Castka = Convert.ToInt32(text.Split(';')[3]);
+            }
+            else
+            { 
+                Klient = text;
+                TypUctu = "Bezny Ucet";
+            }
         }
     }
 }
