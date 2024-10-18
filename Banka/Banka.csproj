@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BeznyUcet.cs" />
+    <Compile Include="FormPoslatPenize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPoslatPenize.Designer.cs">
+      <DependentUpon>FormPoslatPenize.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrihlaseni.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="SporiciUcet.cs" />
     <EmbeddedResource Include="FormNovyUcet.resx">
       <DependentUpon>FormNovyUcet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPoslatPenize.resx">
+      <DependentUpon>FormPoslatPenize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrihlaseni.resx">
       <DependentUpon>FormPrihlaseni.cs</DependentUpon>

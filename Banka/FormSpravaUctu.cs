@@ -18,6 +18,7 @@ namespace Banka
 
             lbJmeno.Text = klient.Jmeno + " " + klient.Prijmeni;
             aktualniKlient = klient;
+
             if (aktualniKlient.BezneUcty.Count == 0)
             {
                 btSporiciUcetVytvorit.Visible = false;
@@ -25,6 +26,9 @@ namespace Banka
         }
 
         Klient aktualniKlient;
+        BeznyUcet aktualniBeznyUcet;
+        SporiciUcet aktualniSporiciUcet;
+
 
         private void btBeznyUcet_Click(object sender, EventArgs e)
         {
@@ -33,33 +37,73 @@ namespace Banka
             Globalni.seznamBeznychUctu.Add(beznyUcet);
             lboxBezneUcty.Items.Add(beznyUcet);
             btSporiciUcetVytvorit.Visible = true;
+            btBeznyPoslat.Visible = true;
         }
 
         private void btSporiciUcetVytvorit_Click(object sender, EventArgs e)
         {
-            SporiciUcet sporiciUcet = new SporiciUcet("Spořící účet",aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
+            SporiciUcet sporiciUcet = new SporiciUcet("Spořící účet", aktualniKlient.Jmeno + " " + aktualniKlient.Prijmeni);
             aktualniKlient.SporiciUcty.Add(sporiciUcet);
             Globalni.seznamSporicichUctu.Add(sporiciUcet);
             lboxSporiciUcty.Items.Add(sporiciUcet);
+            btSporiciPoslat.Visible = true;
         }
 
         private void FormSpravaUctu_Load(object sender, EventArgs e)
         {
-            if (aktualniKlient.BezneUcty != null) {
+            if (aktualniKlient.BezneUcty.Count != 0) {
                 foreach (BeznyUcet beznyUcet in aktualniKlient.BezneUcty)
                 {
                     lboxBezneUcty.Items.Add(beznyUcet);
                 }
+                btBeznyPoslat.Visible = true;
             }
 
-
-            if (aktualniKlient.SporiciUcty != null)
+            if (aktualniKlient.SporiciUcty.Count != 0)
             {
                 foreach (SporiciUcet sporiciUcet in aktualniKlient.SporiciUcty)
                 {
                     lboxSporiciUcty.Items.Add(sporiciUcet);
                 }
+                btSporiciPoslat.Visible = true;
             }
+        }
+
+        private void btBeznyPoslat_Click(object sender, EventArgs e)
+        {
+            if(aktualniBeznyUcet != null)
+            {
+                FormPoslatPenize formPoslatPenize = new FormPoslatPenize();
+                formPoslatPenize.aktualniKlient = aktualniKlient;
+                formPoslatPenize.aktualniBeznyUcet = aktualniBeznyUcet;
+                formPoslatPenize.ShowDialog();
+            }
+        }
+        private void btSporiciPoslat_Click(object sender, EventArgs e)
+        {
+            if(aktualniSporiciUcet != null)
+            {
+                FormPoslatPenize formPoslatPenize = new FormPoslatPenize();
+                formPoslatPenize.aktualniKlient = aktualniKlient;
+                formPoslatPenize.aktualniSporiciUcet = aktualniSporiciUcet;
+                formPoslatPenize.ShowDialog();
+            }
+        }
+
+        private void lboxBezneUcty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lboxBezneUcty.SelectedIndex != -1)
+                aktualniBeznyUcet = (BeznyUcet)lboxBezneUcty.SelectedItem;
+            else
+                aktualniBeznyUcet = null;
+        }
+
+        private void lboxSporiciUcty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lboxSporiciUcty.SelectedIndex != -1)
+                aktualniSporiciUcet = (SporiciUcet)lboxSporiciUcty.SelectedItem;
+            else
+                aktualniSporiciUcet = null;
         }
     }
 }

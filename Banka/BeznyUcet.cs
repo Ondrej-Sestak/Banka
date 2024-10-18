@@ -12,7 +12,7 @@ namespace Banka
     {
         public string NazevUctu { get; set; } = "Běžný účet";
         public int CisloUctu { get; set; }
-        public int Castka { get; set; } = 0;
+        public decimal Castka { get; set; } = 0;
         public string Klient { get; set; }
         public string TypUctu { get; set; }
 
@@ -52,6 +52,21 @@ namespace Banka
         public override string ToString()
         {
             return NazevUctu + " " + Castka + " Kč";
+        }
+
+        public string ZobrazUcet()
+        {
+            return Klient + ": " + NazevUctu;
+        }
+
+        public decimal PosliPenize(decimal castka)
+        {
+            return Math.Round(Castka - castka,2);
+        }
+
+        public decimal PrijmiPenize(decimal castka)
+        {
+            return Math.Round(Castka + castka, 2);
         }
 
         public int VytvoreniCislaUctu()

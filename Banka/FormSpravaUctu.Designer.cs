@@ -38,6 +38,10 @@
             this.lboxBezneUcty = new System.Windows.Forms.ListBox();
             this.lboxSporiciUcty = new System.Windows.Forms.ListBox();
             this.btSporiciPoslat = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.uživatelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odebratÚčetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btBeznyPoslat
@@ -49,6 +53,7 @@
             this.btBeznyPoslat.Text = "Poslat";
             this.btBeznyPoslat.UseVisualStyleBackColor = true;
             this.btBeznyPoslat.Visible = false;
+            this.btBeznyPoslat.Click += new System.EventHandler(this.btBeznyPoslat_Click);
             // 
             // lbCastka
             // 
@@ -100,7 +105,7 @@
             // 
             this.lbJmeno.AutoSize = true;
             this.lbJmeno.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbJmeno.Location = new System.Drawing.Point(17, 12);
+            this.lbJmeno.Location = new System.Drawing.Point(17, 24);
             this.lbJmeno.Name = "lbJmeno";
             this.lbJmeno.Size = new System.Drawing.Size(76, 25);
             this.lbJmeno.TabIndex = 8;
@@ -113,6 +118,7 @@
             this.lboxBezneUcty.Name = "lboxBezneUcty";
             this.lboxBezneUcty.Size = new System.Drawing.Size(118, 108);
             this.lboxBezneUcty.TabIndex = 16;
+            this.lboxBezneUcty.SelectedIndexChanged += new System.EventHandler(this.lboxBezneUcty_SelectedIndexChanged);
             // 
             // lboxSporiciUcty
             // 
@@ -121,6 +127,7 @@
             this.lboxSporiciUcty.Name = "lboxSporiciUcty";
             this.lboxSporiciUcty.Size = new System.Drawing.Size(118, 108);
             this.lboxSporiciUcty.TabIndex = 17;
+            this.lboxSporiciUcty.SelectedIndexChanged += new System.EventHandler(this.lboxSporiciUcty_SelectedIndexChanged);
             // 
             // btSporiciPoslat
             // 
@@ -131,6 +138,31 @@
             this.btSporiciPoslat.Text = "Poslat";
             this.btSporiciPoslat.UseVisualStyleBackColor = true;
             this.btSporiciPoslat.Visible = false;
+            this.btSporiciPoslat.Click += new System.EventHandler(this.btSporiciPoslat_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uživatelToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(326, 24);
+            this.menuStrip1.TabIndex = 19;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // uživatelToolStripMenuItem
+            // 
+            this.uživatelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.odebratÚčetToolStripMenuItem});
+            this.uživatelToolStripMenuItem.Name = "uživatelToolStripMenuItem";
+            this.uživatelToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.uživatelToolStripMenuItem.Text = "Uživatel";
+            // 
+            // odebratÚčetToolStripMenuItem
+            // 
+            this.odebratÚčetToolStripMenuItem.Name = "odebratÚčetToolStripMenuItem";
+            this.odebratÚčetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odebratÚčetToolStripMenuItem.Text = "Odebrat účet";
             // 
             // FormSpravaUctu
             // 
@@ -147,10 +179,14 @@
             this.Controls.Add(this.lbSporiciUcet);
             this.Controls.Add(this.lbBeznyUcet);
             this.Controls.Add(this.lbJmeno);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSpravaUctu";
             this.Text = "FormSpravaUctu";
             this.Load += new System.EventHandler(this.FormSpravaUctu_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +204,8 @@
         private System.Windows.Forms.ListBox lboxBezneUcty;
         private System.Windows.Forms.ListBox lboxSporiciUcty;
         private System.Windows.Forms.Button btSporiciPoslat;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem uživatelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odebratÚčetToolStripMenuItem;
     }
 }
