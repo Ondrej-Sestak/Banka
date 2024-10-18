@@ -20,7 +20,10 @@ namespace Banka
         public Klient aktualniKlient;
         public BeznyUcet aktualniBeznyUcet;
         public SporiciUcet aktualniSporiciUcet;
-        private BeznyUcet ucetPrijimajiciPenize;
+
+        BeznyUcet protiUcet;
+
+        List<BeznyUcet> bezneUcty = new List<BeznyUcet>();
 
         bool JsmeNaSporicimUctu => aktualniSporiciUcet != null;
         bool JsmeNaBeznemUctu => aktualniBeznyUcet != null;
@@ -31,27 +34,48 @@ namespace Banka
                 lbNazevUctu.Text = aktualniBeznyUcet.NazevUctu;
                 foreach (BeznyUcet beznyUcet in Globalni.seznamBeznychUctu)
                 {
-                    if(beznyUcet.CisloUctu != aktualniBeznyUcet.CisloUctu)
-                        cbUcty.Items.Add(beznyUcet.ZobrazUcet());
+                    if (beznyUcet.CisloUctu != aktualniBeznyUcet.CisloUctu)
+                        bezneUcty.Add(beznyUcet);
                 }
             }
-            else if(JsmeNaSporicimUctu)
+            else if (JsmeNaSporicimUctu)
             {
                 lbNazevUctu.Text = aktualniSporiciUcet.NazevUctu;
                 foreach (BeznyUcet beznyUcet in aktualniKlient.BezneUcty)
                 {
-                    cbUcty.Items.Add(beznyUcet);
+                    bezneUcty.Add(beznyUcet);
                 }
+            }
+
+            foreach (BeznyUcet beznyUcet in bezneUcty)
+            {
+                cbUcty.Items.Add(beznyUcet);
             }
         }
 
         private void btPoslat_Click(object sender, EventArgs e)
         {
-            if (JsmeNaBeznemUctu){
-                aktualniBeznyUcet.PosliPenize(nupCastka.Value);
-                cbUcty.SelectedItem = ucetPrijimajiciPenize;
-                ucetPrijimajiciPenize.PrijmiPenize(nupCastka.Value);
+            if (cbUcty.SelectedIndex != -1)
+            {
+                if (JsmeNaBeznemUctu)
+                {
+                    aktualniBeznyUcet.PosliPenize(nupCastka.Value);
+                    protiUcet.PrijmiPenize(nupCastka.Value);
+                }
+                else if (JsmeNaSporicimUctu)
+                {
+                    aktualniSporiciUcet.PosliPenize(nupCastka.Value);
+                    protiUcet.PrijmiPenize(nupCastka.Value);
+                }
             }
+        }
+
+        private void cbUcty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbUcty.SelectedIndex != -1) {
+                protiUcet = bezneUcty[cbUcty.SelectedIndex];
+            }
+            MessageBox.Show(protiUcet.ToString());
         }
     }
 }

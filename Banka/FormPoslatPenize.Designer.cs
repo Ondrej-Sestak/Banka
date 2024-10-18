@@ -39,11 +39,11 @@
             // 
             // cbUcty
             // 
-            this.cbUcty.FormattingEnabled = true;
             this.cbUcty.Location = new System.Drawing.Point(15, 67);
             this.cbUcty.Name = "cbUcty";
             this.cbUcty.Size = new System.Drawing.Size(199, 21);
             this.cbUcty.TabIndex = 0;
+            this.cbUcty.SelectedIndexChanged += new System.EventHandler(this.cbUcty_SelectedIndexChanged);
             // 
             // lbNazevUctu
             // 
