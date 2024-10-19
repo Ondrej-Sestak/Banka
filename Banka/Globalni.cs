@@ -13,6 +13,46 @@ namespace Banka
         public static List<BeznyUcet> seznamBeznychUctu = new List<BeznyUcet>();
         public static List<SporiciUcet> seznamSporicichUctu = new List<SporiciUcet>();
 
+
+        public static void PosliPenizeBezny(BeznyUcet beznyUcet)
+        {
+            foreach (BeznyUcet bUcet in seznamBeznychUctu)
+            {
+                if (bUcet.CisloUctu == beznyUcet.CisloUctu)
+                {
+                    bUcet.Castka = beznyUcet.Castka;
+                }
+            }
+
+            foreach (Klient klient in seznamKlientu)
+            {
+                foreach (BeznyUcet bUcet in klient.BezneUcty)
+                {
+                    if (bUcet.CisloUctu == beznyUcet.CisloUctu)
+                        bUcet.Castka = beznyUcet.Castka;
+                }
+            }
+        }
+
+        public static void PosliPenizeSporici(SporiciUcet sporiciUcet)
+        {
+            foreach (SporiciUcet sUcet in seznamSporicichUctu)
+            {
+                if (sUcet.CisloUctu == sporiciUcet.CisloUctu)
+                    sUcet.Castka = sporiciUcet.Castka;
+            }
+
+
+            foreach (Klient klient in seznamKlientu)
+            {
+                foreach (SporiciUcet sUcet in klient.SporiciUcty)
+                {
+                    if (sUcet.CisloUctu == sporiciUcet.CisloUctu)
+                        sUcet.Castka = sporiciUcet.Castka;
+                }
+            }
+        }
+
         public static void NactiSeznamKlientu()
         {
             bool souborBankovniUcetExistuje = File.Exists("Klienti.csv");

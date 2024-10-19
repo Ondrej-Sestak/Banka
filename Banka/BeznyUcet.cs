@@ -12,7 +12,7 @@ namespace Banka
     {
         public string NazevUctu { get; set; } = "Běžný účet";
         public int CisloUctu { get; set; }
-        public decimal Castka { get; set; } = 0;
+        public decimal Castka { get; set; }
         public string Klient { get; set; }
         public string TypUctu { get; set; }
 
@@ -21,6 +21,7 @@ namespace Banka
             NazevUctu = nazevUctu;
             Klient = klient;
             CisloUctu = VytvoreniCislaUctu();
+            Castka = 0;
             if (CisloUctu == -1)
             {
                 throw new ArgumentException("Došli nám čísla účtů, kontaktujte prosím naší banku.");
@@ -61,12 +62,12 @@ namespace Banka
 
         public decimal PosliPenize(decimal castka)
         {
-            return Math.Round(Castka - castka,2);
+            return Math.Round(Castka -= castka,2);
         }
 
         public decimal PrijmiPenize(decimal castka)
         {
-            return Math.Round(Castka + castka, 2);
+            return Math.Round(Castka += castka, 2);
         }
 
         public int VytvoreniCislaUctu()

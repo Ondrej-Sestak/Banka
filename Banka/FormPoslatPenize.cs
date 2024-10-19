@@ -23,8 +23,6 @@ namespace Banka
 
         BeznyUcet protiUcet;
 
-        List<BeznyUcet> bezneUcty = new List<BeznyUcet>();
-
         bool JsmeNaSporicimUctu => aktualniSporiciUcet != null;
         bool JsmeNaBeznemUctu => aktualniBeznyUcet != null;
         private void FormPoslatPenize_Load(object sender, EventArgs e)
@@ -35,7 +33,7 @@ namespace Banka
                 foreach (BeznyUcet beznyUcet in Globalni.seznamBeznychUctu)
                 {
                     if (beznyUcet.CisloUctu != aktualniBeznyUcet.CisloUctu)
-                        bezneUcty.Add(beznyUcet);
+                        cbUcty.Items.Add(beznyUcet);
                 }
             }
             else if (JsmeNaSporicimUctu)
@@ -43,13 +41,8 @@ namespace Banka
                 lbNazevUctu.Text = aktualniSporiciUcet.NazevUctu;
                 foreach (BeznyUcet beznyUcet in aktualniKlient.BezneUcty)
                 {
-                    bezneUcty.Add(beznyUcet);
+                    cbUcty.Items.Add(beznyUcet);
                 }
-            }
-
-            foreach (BeznyUcet beznyUcet in bezneUcty)
-            {
-                cbUcty.Items.Add(beznyUcet);
             }
         }
 
@@ -61,21 +54,24 @@ namespace Banka
                 {
                     aktualniBeznyUcet.PosliPenize(nupCastka.Value);
                     protiUcet.PrijmiPenize(nupCastka.Value);
-                }
-                else if (JsmeNaSporicimUctu)
+                    Globalni.PosliPenizeBezny(aktualniBeznyUcet);
+                    Globalni.PosliPenizeBezny(protiUcet);
+                }else if (JsmeNaSporicimUctu)
                 {
                     aktualniSporiciUcet.PosliPenize(nupCastka.Value);
                     protiUcet.PrijmiPenize(nupCastka.Value);
+                    Globalni.PosliPenizeSporici(aktualniSporiciUcet);
+                    Globalni.PosliPenizeBezny(protiUcet);
                 }
+                Close();
             }
         }
 
         private void cbUcty_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbUcty.SelectedIndex != -1) {
-                protiUcet = bezneUcty[cbUcty.SelectedIndex];
+                protiUcet = cbUcty.SelectedItem as BeznyUcet;
             }
-            MessageBox.Show(protiUcet.ToString());
         }
     }
 }
